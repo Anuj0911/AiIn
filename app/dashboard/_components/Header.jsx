@@ -13,36 +13,32 @@ function Header() {
     },[])
 
   return (
-    <div className='flex p-5 items-center justify-between bg-secondary shadow-sm'>
-        <Image src={'/head.png'} width={130} height={0} alt='logo' />
-        <ul className='hidden md:flex gap-6'>
-          <Link href={"/dashboard"}>
-            <li className={`hover:text-primary hover:font-bold transition-all
-            cursor-pointer
-            ${path=='/dashboard'&&'text-primary font-bold'}
-            `}
-            
-            >Dashboard</li>
-            </Link>
-            
-            <li className={`hover:text-primary hover:font-bold transition-all
-            cursor-pointer
-            ${path=='/dashboard/questions'&&'text-primary font-bold'}
-            `}>Questions</li>
-              <Link href={"/dashboard/upgrade"}>
-            <li className={`hover:text-primary hover:font-bold transition-all
-            cursor-pointer
-            ${path=='/dashboard/upgrade'&&'text-primary font-bold'}
-            `}>Upgrade</li>
-            </Link>
-            <li className={`hover:text-primary hover:font-bold transition-all
-            cursor-pointer
-            ${path=='/dashboard/how'&&'text-primary font-bold'}
-            `}>How it Works?</li>
-        </ul>
-        <UserButton/>
-    </div>
+    <nav className="flex items-center justify-between px-6 py-4 bg-gray-800 shadow-md">
+    {/* Logo */}
+    <Link href="/">
+      <Image src="/aiMock.png" width={60} height={10} alt="logo" className="cursor-pointer" />
+    </Link>
+
+    {/* Navigation Links */}
+    <ul className="hidden md:flex space-x-6 text-white font-medium">
+      <NavItem href="/dashboard" label="Dashboard" path={path} />
+      <NavItem href="/dashboard/questions" label="Questions" path={path} />
+      <NavItem href="/dashboard/upgrade" label="Upgrade" path={path} />
+      <NavItem href="/dashboard/how" label="How it Works?" path={path} />
+    </ul>
+
+    {/* User Button */}
+    <UserButton />
+  </nav>
   )
 }
+
+const NavItem = ({ href, label, path }) => (
+  <Link href={href}>
+    <li className={`cursor-pointer transition-all hover:text-yellow-400 ${path === href ? "text-yellow-400 font-bold" : "text-gray-300"}`}>
+      {label}
+    </li>
+  </Link>
+);
 
 export default Header
