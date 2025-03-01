@@ -23,7 +23,6 @@ function Header() {
     <ul className="hidden md:flex space-x-6 text-white font-medium">
       <NavItem href="/dashboard" label="Dashboard" path={path} />
       <NavItem href="/dashboard/questions" label="Questions" path={path} />
-      <NavItem href="/dashboard/upgrade" label="Upgrade" path={path} />
       <NavItem href="/dashboard/how" label="How it Works?" path={path} />
     </ul>
 
